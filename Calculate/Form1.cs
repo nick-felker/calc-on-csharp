@@ -13,31 +13,31 @@ namespace Calculate
 {
     public partial class fCalc : Form
     {
-        
+
         public fCalc()
         {
             InitializeComponent();
         }
 
+      
 
-
-        public bool tm=false;
+        public bool tm = false;
         bool NewOp = true;
         int op = -1;
-        double a = 0, b = 0, c = 0;
-        double tb_Calc_Rest = 0;
-
-
+        public double a = 0, b = 0, c = 0;
         
+
+
+
 
         private void fCalc_LocationChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void fCalc_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tb_Calc_KeyPress(object sender, KeyPressEventArgs e)
@@ -70,13 +70,13 @@ namespace Calculate
         private void bClear_Click(object sender, EventArgs e)
         {
             op = -1;
-            tb_Calc.Text =  "0";
+            tb_Calc.Text = "0";
             NewOp = true;
         }
 
         private void bPoint_Click(object sender, EventArgs e)
         {
-            if(NewOp)
+            if (NewOp)
             {
                 tb_Calc.Text = "0";
                 NewOp = false;
@@ -85,7 +85,31 @@ namespace Calculate
 
         }
 
-        private void bRavno_Click(object sender, EventArgs e)
+        public double _bRavno_Click(double a, double b, int op)
+        {
+            switch (op)
+            {
+                case 1:
+                    c = a + b;
+                    break;
+                case 2:
+                    c = a - b;
+                    break;
+                case 3:
+                    c = a * b;
+                    break;
+                case 4:
+                    c = a / b;
+                    break;
+                case 5:
+                    c = Math.Pow(a, b);
+                    break;
+            }
+            
+            return c;
+        }
+
+        public void bRavno_Click(object sender, EventArgs e)
         {
             b = Convert.ToDouble(tb_Calc.Text);
             switch (op)
@@ -106,12 +130,11 @@ namespace Calculate
                     c = Math.Pow(a, b);
                     break;
             }
-                    tb_Calc.Text = Convert.ToString(c);
-                    NewOp = true;
-                    op = -1;
-            
-                    
-            
+            tb_Calc.Text = Convert.ToString(c);
+            NewOp = true;
+            op = -1;
+           
+
         }
 
         private void bPlus_Click(object sender, EventArgs e)
@@ -124,13 +147,13 @@ namespace Calculate
                 a = Convert.ToDouble(tb_Calc.Text);
                 NewOp = true;
                 op = 1;
-                
+
             }
         }
 
         private void bMinus_Click(object sender, EventArgs e)
         {
-            if (!(tb_Calc.Text.IndexOf("-")>-1&& tb_Calc.Text.Length - 1 == tb_Calc.Text.IndexOf("-")))
+            if (!(tb_Calc.Text.IndexOf("-") > -1 && tb_Calc.Text.Length - 1 == tb_Calc.Text.IndexOf("-")))
             {
                 if (tb_Calc.Text == "" || tb_Calc.Text == "0")
                 {
@@ -140,7 +163,7 @@ namespace Calculate
                 }
                 else
                 {
-                    
+
 
                     if (op > 0)
                         bRavno_Click(sender, e);
@@ -150,7 +173,7 @@ namespace Calculate
                 }
 
             }
-            
+
         }
 
         private void bUmn_Click(object sender, EventArgs e)
@@ -158,7 +181,7 @@ namespace Calculate
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
             else
             {
-                
+
                 if (op > 0)
                     bRavno_Click(sender, e);
                 a = Convert.ToDouble(tb_Calc.Text);
@@ -172,7 +195,7 @@ namespace Calculate
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
             else
             {
-                
+
                 if (op > 0)
                     bRavno_Click(sender, e);
                 a = Convert.ToDouble(tb_Calc.Text);
@@ -208,22 +231,22 @@ namespace Calculate
         private void bCtg_Click(object sender, EventArgs e)
         {
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
-            tb_Calc.Text =(1/Math.Tan(Convert.ToDouble(tb_Calc.Text))).ToString();
+            tb_Calc.Text = (1 / Math.Tan(Convert.ToDouble(tb_Calc.Text))).ToString();
             NewOp = true;
             op = -1;
         }
 
-        
 
-        
 
-       
 
-        
 
-       
 
-        
+
+
+
+
+
+
 
         private void bx_y_Click(object sender, EventArgs e)
         {
@@ -238,8 +261,8 @@ namespace Calculate
             }
         }
 
-        
-        
+
+
         private void tb_Calc_TextChanged(object sender, EventArgs e)
         {
 
@@ -247,8 +270,10 @@ namespace Calculate
 
         
 
-        
-
-        
-    }
+        public void bRavno_Click(int a, string v)
+        {
+            throw new NotImplementedException();
+        }
+    }       
+    
 }
