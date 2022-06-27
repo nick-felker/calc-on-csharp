@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using Calculate;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,13 +15,14 @@ namespace Calculate
     public partial class fCalc : Form
     {
 
+
         public fCalc()
         {
             InitializeComponent();
         }
 
-      
 
+        Operations operations = new Operations();
         public bool tm = false;
         bool NewOp = true;
         int op = -1;
@@ -90,19 +92,19 @@ namespace Calculate
             switch (op)
             {
                 case 1:
-                    c = a + b;
+                    c = operations.plus(a, b);
                     break;
                 case 2:
-                    c = a - b;
+                    c = operations.minus(a, b);
                     break;
                 case 3:
-                    c = a * b;
+                    c = operations.multiply(a, b);
                     break;
                 case 4:
-                    c = a / b;
+                    c = operations.divide(a, b);
                     break;
                 case 5:
-                    c = Math.Pow(a, b);
+                    c = operations.pow(a, b);
                     break;
             }
             
@@ -115,19 +117,19 @@ namespace Calculate
             switch (op)
             {
                 case 1:
-                    c = a + b;
+                    c = operations.plus(a, b);
                     break;
                 case 2:
-                    c = a - b;
+                    c = operations.minus(a, b);
                     break;
                 case 3:
-                    c = a * b;
+                    c = operations.multiply(a, b);
                     break;
                 case 4:
-                    c = a / b;
+                    c = operations.divide(a, b);
                     break;
                 case 5:
-                    c = Math.Pow(a, b);
+                    c = operations.pow(a, b);
                     break;
             }
             tb_Calc.Text = Convert.ToString(c);
@@ -207,7 +209,7 @@ namespace Calculate
         private void bsin_Click(object sender, EventArgs e)
         {
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
-            tb_Calc.Text = Math.Sin(Convert.ToDouble(tb_Calc.Text)).ToString();
+            tb_Calc.Text = operations.sin(Convert.ToDouble(tb_Calc.Text)).ToString();
             NewOp = true;
             op = -1;
         }
@@ -215,7 +217,7 @@ namespace Calculate
         private void bCos_Click(object sender, EventArgs e)
         {
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
-            tb_Calc.Text = Math.Cos(Convert.ToDouble(tb_Calc.Text)).ToString();
+            tb_Calc.Text = operations.cos(Convert.ToDouble(tb_Calc.Text)).ToString();
             NewOp = true;
             op = -1;
         }
@@ -223,18 +225,11 @@ namespace Calculate
         private void bTg_Click(object sender, EventArgs e)
         {
             if (tb_Calc.Text == "") tb_Calc.Text = "0";
-            tb_Calc.Text = Math.Tan(Convert.ToDouble(tb_Calc.Text)).ToString();
+            tb_Calc.Text = operations.tan(Convert.ToDouble(tb_Calc.Text)).ToString();
             NewOp = true;
             op = -1;
         }
 
-        private void bCtg_Click(object sender, EventArgs e)
-        {
-            if (tb_Calc.Text == "") tb_Calc.Text = "0";
-            tb_Calc.Text = (1 / Math.Tan(Convert.ToDouble(tb_Calc.Text))).ToString();
-            NewOp = true;
-            op = -1;
-        }
 
 
 
@@ -270,10 +265,7 @@ namespace Calculate
 
         
 
-        public void bRavno_Click(int a, string v)
-        {
-            throw new NotImplementedException();
-        }
+       
     }       
     
 }
