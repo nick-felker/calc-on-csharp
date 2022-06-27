@@ -8,10 +8,6 @@ namespace Calculate
 {
     public class Operations
     {
-        public static double Truncate(double value, int precision)
-        {
-            return Math.Truncate(value * Math.Pow(10, precision)) / Math.Pow(10, precision);
-        }
         public double plus(double a, double b)
         {
             return a + b; 
