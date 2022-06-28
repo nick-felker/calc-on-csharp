@@ -4,20 +4,16 @@ using Calculate;
 
 namespace calcTest
 {
-
-   
-
-
-
     [TestClass]
     public class resultCalcTest
     {
         [TestMethod]
         public void TestMethodPlus()
         {
+            Operations operation = new Operations();
             fCalc calc = new fCalc();
             double a = 5; double b = 10;
-            double expected = 15;
+            double expected = operation.plus(a, b);
             double result;
             result = calc._bRavno_Click(a, b, 1);
             Assert.AreEqual(expected, result);
@@ -25,9 +21,10 @@ namespace calcTest
         [TestMethod]
         public void TestMethodMinus()
         {
+            Operations operation = new Operations();
             fCalc calc = new fCalc();
             double a = 10; double b = 5;
-            double expected = 5;
+            double expected = operation.minus(a, b);
             double result;
             result = calc._bRavno_Click(a, b, 2);
             Assert.AreEqual(expected, result);
@@ -36,8 +33,9 @@ namespace calcTest
         public void TestMethodMultiply()
         {
             fCalc calc = new fCalc();
+            Operations operation = new Operations();
             double a = 5; double b = 10;
-            double expected = 50;
+            double expected = operation.multiply(a, b);
             double result;
             result = calc._bRavno_Click(a, b, 3);
             Assert.AreEqual(expected, result);
@@ -46,8 +44,9 @@ namespace calcTest
         public void TestMethodDivide()
         {
             fCalc calc = new fCalc();
+            Operations operation = new Operations();
             double a = 10; double b = 5;
-            double expected = 2;
+            double expected = operation.divide(a, b);
             double result;
             result = calc._bRavno_Click(a, b, 4);
             Assert.AreEqual(expected, result);
@@ -56,8 +55,9 @@ namespace calcTest
         public void TestMethodPow()
         {
             fCalc calc = new fCalc();
+            Operations operation = new Operations();
             double a = 5; double b = 10;
-            double expected = Math.Pow(a, b);
+            double expected = operation.pow(a, b);
             double result;
             result = calc._bRavno_Click(a, b, 5);
             Assert.AreEqual(expected, result);
@@ -89,7 +89,7 @@ namespace calcTest
             result = operation.tan(a);
             Assert.AreEqual(expected, result);
         }
-
     }
+
     
 }

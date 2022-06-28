@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Calculate</RootNamespace>
     <AssemblyName>Calculate</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -53,6 +53,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plant\twoArgsPlant.cs" />
     <Compile Include="Plant\TwoArgFactoryHelpers.cs" />
     <Compile Include="Plant\plantMethods.cs" />
     <Compile Include="Program.cs" />

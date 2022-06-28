@@ -1,38 +1,66 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculate.Plant
+namespace WindowsFormsApp2
 {
 
-    public interface ITwoArgumentsCalculator
+
+    public interface IOneArgumentsCalculator
     {
-        double Calculate(double argumentOne, double ArgumentTwo);
+        double Calculate(double argumentOne);
     }
-    public class SubtractionCalculator : ITwoArgumentsCalculator
+
+
+    public class CosCalculator : IOneArgumentsCalculator
     {
-        public double Calculate(double firstArg, double secondArg) => firstArg - secondArg;
+        public double Calculate(double firstArg) => Math.Cos(firstArg);
     }
-    public class ZeroCalculator : ITwoArgumentsCalculator
+  
+
+
+   
+    
+    public class TanCalculator : IOneArgumentsCalculator
     {
-        public double Calculate(double firstArg, double secondArg) => 0;
+        public double Calculate(double firstArg) => Math.Tan(firstArg);
+
     }
-    static class TwoArgPlant
+    public class SinCalculator : IOneArgumentsCalculator
     {
-        internal static ITwoArgumentsCalculator CreateCalculator(string Calc_name)
+        public double Calculate(double firstArg) => Math.Sin(firstArg);
+
+    }
+    public class ZeroOneCalculator : IOneArgumentsCalculator
+    {
+        public double Calculate(double firstArg) => 0;
+
+    }
+    static class OneArgFactory
+    {
+
+        internal static IOneArgumentsCalculator CreateCalculator(string Calc_name)
         {
-            if(Calc_name == "substract")
+
+            if (Calc_name == "Cos")
             {
-                return new SubtractionCalculator();
+
+                return new CosCalculator();
+
+            }
+            else if (Calc_name == "Tan")
+            {
+                return new TanCalculator();
+            }
+            else if (Calc_name == "Sin")
+            {
+                return new SinCalculator();
             }
             else
             {
-                return new ZeroCalculator();
+                return new ZeroOneCalculator();
             }
-        }
 
+
+        }
     }
-    
+
+
 }

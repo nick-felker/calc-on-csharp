@@ -1,0 +1,15 @@
+﻿@using (Html.BeginForm("Index", "Home", "Post"))
+{
+	 <input type="number" name="firstNumber" value="0"/>
+	 <input type="number" name="secondNumber" value="0"/>
+	 <select name="operation">
+	 @for (int i = 0; i < ViewBag.Operation.Length; i++)
+		{
+			 <option value="@ViewBag.Operation[i].Value">
+			 @ViewBag.Operation[i].Text
+			 </option>
+		}
+	 </select>
+	 <input type="submit" value="вычислить"/>
+	<p>@ViewBag.Result</p>
+}
